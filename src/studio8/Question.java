@@ -12,7 +12,7 @@ public class Question {
 	}
 	
 	public void displayPrompt() {
-		System.out.println(this.prompt + "(" + this.points + " points)");
+		System.out.println(this.prompt + " (points: " + this.points + ")");
 	}
 	
 	public int checkAnswer(String givenAnswer) {

@@ -1,18 +1,15 @@
 package studio8;
 
 public class MultipleChoiceQuestion extends Question {
-	private String prompt;
-	private int points;
+	
 	private String[] choices;
 
-	
 	public MultipleChoiceQuestion(String prompt, String answer, int points, String[] choices) {
 		super(prompt, answer, points);
-		this.prompt = prompt;
-		this.points = points;
 		this.choices = choices;
 	}
 	
+	@Override
 	public void displayPrompt() {
 		//FIXME
 		
@@ -27,9 +24,9 @@ public class MultipleChoiceQuestion extends Question {
 		 * N. ChoiceN
 		 */
 		//
-		System.out.println(this.prompt + "(" + this.points + " points)");
+		super.displayPrompt();
 		for (int i = 0; i < choices.length; i++) {
-			System.out.println((i+1) + ". " + choices[i]);
+			System.out.println((i + 1) + ". " + choices[i]);
 		}
 	}
 	

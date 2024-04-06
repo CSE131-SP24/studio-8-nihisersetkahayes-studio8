@@ -26,14 +26,13 @@ public class Quiz {
 	}
 	
 	public void takeQuiz() {
-		int sum = 0;
-		for (int i = 0; i < this.questions.length; i++) {
-			this.questions[i].displayPrompt();
-			int points = this.questions[i].checkAnswer(getUserAnswer());
-			System.out.println(points);
-			sum += points;
+		int points = 0;
+		for(Question q : questions) {
+			q.displayPrompt();
+			String givenAnswer = this.getUserAnswer();
+			points += q.checkAnswer(givenAnswer);
 		}
-		System.out.println(sum + " / " + this.getTotalPoints());
+		System.out.println("You scored " + points + " out of " + getTotalPoints());
 	}
 	
 	public static void main(String[] args) {

@@ -1,24 +1,16 @@
 package studio8;
 
 public class SelectAllQuestion extends MultipleChoiceQuestion {
-	private String prompt;
-	private String answer;
-	private int points;
-	private String[] choices;
 	
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		super(prompt, answer, choices.length, choices);
-		this.prompt = prompt;
-		this.answer = answer;
-		this.choices = choices;
 	}
 	
 	public int checkAnswer(String givenAnswer) {
-		int totalValue = 0;
-		for (int i = 0; i < choices.length; i++) {
-			totalValue++;
-		}
-		return totalValue - (findMissingCorrectAnswers(givenAnswer) + findIncorrectGivenAnswers(givenAnswer));
+		int score = this.getPoints();
+		score = score - findMissingCorrectAnswers(givenAnswer);
+		score = score - findIncorrectGivenAnswers(givenAnswer);
+		return score;
 	}
 
 	private int findMissingCorrectAnswers(String givenAnswer) {
